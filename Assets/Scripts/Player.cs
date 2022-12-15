@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-<<<<<<< HEAD
-=======
     
 
 
@@ -38,32 +36,16 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
     {
         rb.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
->>>>>>> a96fdc76c15db345e659aac6f0e5ca3a4346849b
     }
     FixedUpated();
     }
     
     
 
-<<<<<<< HEAD
-
-
-
-
-	// Update is called once per frame
-	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-	    }
-=======
 void FixedUpated()
     {
 if (moveHorizontal >0.1f || moveHorizontal < -0.1f){
     rb.AddForce(new Vector2( moveHorizontal*step, 0f),ForceMode2D.Impulse);
 }
->>>>>>> a96fdc76c15db345e659aac6f0e5ca3a4346849b
     }
 }
