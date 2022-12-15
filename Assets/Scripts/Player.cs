@@ -19,18 +19,26 @@ public class Player : MonoBehaviour
         step = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.CompareTag("Lava")){
+            transform.position = new Vector3(0,0,0);
+        }else if(collision.gameObject.CompareTag("Puerta")){
+            Destroy(collision.gameObject);
+        }
 
-    
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-if (Input.GetKeyDown(KeyCode.UpArrow))
-    {
-        rb.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
     }
 
+
+
+
+
+	// Update is called once per frame
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+	    }
     }
 }
