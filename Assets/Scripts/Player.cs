@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
     float step;
-
+    private float moveHorizontal;
     Rigidbody2D rb;
     
     [SerializeField] float jumpForce =10;
@@ -25,12 +25,21 @@ public class Player : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-if (Input.GetKeyDown(KeyCode.UpArrow))
+    void Update(){
+        moveHorizontal =Input.GetAxisRaw("Horizontal");
+        if (Input.GetKeyDown(KeyCode.UpArrow))
     {
         rb.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
     }
+    FixedUpated();
+    }
+    
+    
 
+void FixedUpated()
+    {
+if (moveHorizontal >0.1f || moveHorizontal < -0.1f){
+    rb.AddForce(new Vector2( moveHorizontal*step, 0f),ForceMode2D.Impulse);
+}
     }
 }
