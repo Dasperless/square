@@ -30,29 +30,29 @@ public class Player : MonoBehaviour
 			Destroy(collision.gameObject);
 		}
 
+	}
 
 
 
 
-		// Update is called once per frame
-		void Update()
+	// Update is called once per frame
+	void Update()
+	{
+		moveHorizontal = Input.GetAxisRaw("Horizontal");
+		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
-			moveHorizontal = Input.GetAxisRaw("Horizontal");
-			if (Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-			}
-			FixedUpated();
+			rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 		}
+		FixedUpated();
+	}
 
 
 
-		void FixedUpated()
+	void FixedUpated()
+	{
+		if (moveHorizontal > 0.1f || moveHorizontal < -0.1f)
 		{
-			if (moveHorizontal > 0.1f || moveHorizontal < -0.1f)
-			{
-				rb.AddForce(new Vector2(moveHorizontal * step, 0f), ForceMode2D.Impulse);
-			}
+			rb.AddForce(new Vector2(moveHorizontal * step, 0f), ForceMode2D.Impulse);
 		}
 	}
 }
